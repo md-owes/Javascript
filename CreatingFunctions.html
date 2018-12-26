@@ -1,0 +1,57 @@
+<html>
+<body>
+    <script>
+        // define function using declarative syntax
+        function PrintName(name){
+            return "Good Morning "+name +"!";
+        }
+
+        document.write(PrintName("Owes")+"<br/>");
+
+        //define function using new operator
+        var newFunc = new Function("name","return 'Good Afternoon ' + name + '!'");
+        document.write(newFunc("Aslam")+"<br/>");
+
+        document.write(typeof newFunc+"<br/>");
+        document.write((PrintName instanceof Function)+"<br/>");
+
+        //define function using expression
+        var oddeven = function(num){
+            if(num%2==0)
+                return "even";
+            else
+                return "odd";
+        };
+        document.write(oddeven(5)+"<br/>");
+        // length property on function stores the number of named parameters of that function
+        document.write(oddeven.length+"<br/>");
+
+        // pass any number of parameters to functions
+        function sum(){
+            var result = 0;
+            for(var i=0;i<arguments.length;i++){
+                result+=arguments[i];
+            }
+            return result;
+        }
+        document.write(sum(11,8,65,22)+"<br/>");
+        document.write(sum(57,9)+"<br/>");
+
+
+        //function overloading
+        function product(num1, num2, num3)
+        {
+            return num1*num2*num3;
+        }
+
+        function product(num1, num2)
+        {
+            return num1*num2;
+        }
+        document.write(product(3,5,7)+"<br/>"); // the returned value is not 105 but 15, reason javascript engine will execute last defined function
+        //To actually overload function, use single function and use arguments keyword to write if else statement
+
+        
+    </script>
+</body>
+</html>

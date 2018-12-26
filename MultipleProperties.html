@@ -1,0 +1,44 @@
+<html>
+
+<body>
+    <script>
+        //add multiple properties to Object
+        var creditCard = {};
+        Object.defineProperties(creditCard, {
+            name: {
+                value: "HDFC CreditCard",
+                enumerable: true,
+                configurable: true,
+                writable: true
+            },
+            _description: {
+                value: "The bank of HDFC",
+                writable: true
+            },
+            description: {
+                get: function () {
+                    return this._description;
+                },
+                set: function (value) {
+                    this._description = value;
+                },
+                enumerable: true,
+                configurable: true
+            }
+        });
+        creditCard.description = "The bank of Baroda";
+        for (var prop in creditCard) {
+            console.log(prop);
+            console.log(creditCard[prop]);
+        }
+
+        //retrieve property attributes
+        var descriptor = Object.getOwnPropertyDescriptor(creditCard,"name");
+        console.log(descriptor.enumerable);
+        console.log(descriptor.configurable);
+        console.log(descriptor.writable);
+        console.log(descriptor.value);
+    </script>
+</body>
+
+</html>

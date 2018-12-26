@@ -1,0 +1,86 @@
+<html>
+
+<body>
+    <script>
+        var student = {
+            id: 1,
+            name: "Owes",
+            display: function () {
+                document.write("ID => " + this.id + "<br/>" + "Name => " + this.name + "<br/>");
+            }
+        }
+
+        student.display();
+
+        //alternate way to reuse function
+        function displayInfo(score) {
+            document.write("ID => " + this.id + "<br/>" + "Name => " + this.name + "<br/>");
+            if (score != null)
+                document.write("Score => " + score + "<br/>");
+        }
+
+        var stud1 = {
+            id: 4,
+            name: "Sahir",
+            display: displayInfo
+        }
+        var stud2 = {
+            id: 7,
+            name: "babu",
+            display: displayInfo
+        }
+
+        stud1.display();
+        stud2.display();
+
+        // Global this keyword
+        this.id = 11;
+        this.name = "Zeeshan";
+        this.displayInfo();
+
+        //Call inbuilt function
+        var stud3 = {
+            id: 15,
+            name: "Mohan"
+        }
+        var stud4 = {
+            id: 19,
+            name: "Raju"
+        }
+
+        displayInfo.call(stud3);
+        displayInfo.call(stud4);
+
+        //apply method is same as call except that the paramters are passed as an array
+        var stud5 = {
+            id: 24,
+            name: "Emily"
+        }
+        var stud6 = {
+            id: 28,
+            name: "Dickenson"
+        }
+        displayInfo.apply(stud5, [87]);
+        displayInfo.apply(stud6, [69]);
+
+        //Bind method
+        var stud7 = {
+            id: 33,
+            name: "Emily"
+        }
+        var stud8 = {
+            id: 37,
+            name: "Dickenson"
+        }
+
+        var dispStud7 = displayInfo.bind(stud7);
+        dispStud7();
+        var dispStud8 = displayInfo.bind(stud8);
+        dispStud8();
+
+        dispStud8.d = dispStud7;
+        dispStud8.d();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+    <script>
+        var course1 = {
+            name : "Javascript Basics" //Javascript engine calls Put method on this object to allocate memory for 'name' property
+        };
+
+        var course2 = new Object();
+        course2.name = "Javascript Advanced"; //Javascript engine calls Put method on this object to allocate memory for 'name' property
+
+        course1.name = "Javascripts for dummies"; //Javascript engine calls Set method to reuse the same memory for 'name' property but assign a different value
+
+        course1.description = "Master the concepts of Javascript"; //Javascript engine calls Put method on this object to allocate memory for 'name' property
+
+        //delete course1.description;   //To delete an object property, javascript engine calls delete method to deallocate memory reserved for this property
+
+        console.log("description" in course1); //check if a property excists on an object
+        console.log("toString" in course1);
+        console.log(course1.hasOwnProperty("toString")); //tells if a property is owned by a particular object. In this case, toString is inherited from Object and available to all user/system defined objects
+
+        //whenever we assign a property to an object, enumerable flag is set to true on that property which makes the property available to an object when you browse all object properties
+        for(var prop in course1){
+            console.log(prop);
+            console.log(course1[prop]);
+        }
+
+        //another way to retrieve all property keys of an object
+        var objArr = Object.keys(course1);
+        
+        for(var i =0; i< objArr.length; i++){
+            console.log(objArr[i]);
+            console.log(course1[objArr[i]]);
+        }
+
+        //to check if a property is enaumerable or not, by default all user defined properties are enumerable and system defined properties are not enumerable.
+        console.log(course1.propertyIsEnumerable("name"));
+    </script>
+</body>
+</html>

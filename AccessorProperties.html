@@ -1,0 +1,44 @@
+<html>
+<body>
+    <script>
+        //Till now we have defined and used properties. Those are called data properties which directly hold a value. Now lets see special property named Accessor properties below.
+
+        var creditCard = {
+            _name : "HDFC CreditCard",
+            get name(){ //name() could be any name
+                return this._name;
+            },
+            set name(value){ //name() should match the get name()
+                this._name = value;
+            },
+            number : 9856321475632147
+        };
+
+        // eventhough you are able to access the private property, it is recommended not to use since you may have included special logic to do some data validation before the value is set or returned.
+        console.log(creditCard.name);
+        creditCard._name="SBI CreditCard";
+        console.log(creditCard.name);
+
+        //When we set enumerable attribute of a property on an object to false, that property will not be available when you traverse through the object properties
+        Object.defineProperty(creditCard, "number", {
+            enumerable:false
+        });
+        
+        for(var prop in creditCard){
+            console.log(prop);
+            console.log(creditCard[prop]);
+        }
+
+        //When we set configurable attribute of a property on an object to false, that property will not be allowed for modifications or deletions
+        Object.defineProperty(creditCard, "number", {
+            configurable:false
+        });
+
+        delete creditCard.number
+
+        console.log("name" in creditCard)
+        console.log(creditCard.number);
+
+    </script>
+</body>
+</html>

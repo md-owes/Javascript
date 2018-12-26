@@ -1,0 +1,33 @@
+<html>
+
+<body>
+    <script>
+        function Laptop(manufacturer, memory, capacity) {
+            this.manufacturer = manufacturer;
+            this.memory = memory;
+
+            Object.defineProperty(this, "capacity", {
+                get: function () {
+                    return capacity;
+                },
+                set: function (value) {
+                    this.capacity = value;
+                }
+            });
+
+            this.display = function () {
+                console.log("Manufacturer : " + this.manufacturer);
+                console.log("Memory : " + this.memory);
+                console.log("Capacity : " + this.capacity);
+            };
+        }
+
+        var lappy = new Laptop("Dell", "8GB", "1TB");
+        lappy.display();
+
+        var lappy2 = new Laptop("HP", "16GB", "2TB");
+        lappy2.display();
+    </script>
+</body>
+
+</html>

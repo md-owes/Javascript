@@ -1,0 +1,46 @@
+<html>
+
+<body>
+    <script>
+        var product = {
+            name : "Iphone 6s Plus"
+        };
+
+        console.log("Object extensible : "+Object.isExtensible(product))
+
+        //By default all user defined objects are extensible, meaning you can dynamically add/remove properties and methods to an object. There are 3 ways to prevent it
+        //1. By setting extensible to false
+        Object.preventExtensions(product);
+        console.log("Object extensible after preventing extensions: "+Object.isExtensible(product))
+
+        product.price = 50;
+
+        console.log("price property present in product after preventing extensions: ");
+        console.log("price" in product);
+
+        //2. By sealing an object it will not only prevent extensions to the object, but also make the object non-configurable, meaning you cannot modify or delete existing properties.
+        Object.seal(product);
+        console.log("Is Object sealed after sealing it: "+Object.isSealed(product));
+
+        delete product.name;
+
+        console.log("name property present in product after deleting the property while sealed: ");
+        console.log("name" in product);
+
+        var desc = Object.getOwnPropertyDescriptor(product, "name");
+        console.log("Is name property configurable after sealing object: "+desc.configurable);
+
+        //3. By freezing an object it will not only be sealed by preventing extensions and making it non-configurable, but also make the object non-writable, meaning you cannot set vlue to its properties
+        Object.freeze(product);
+        console.log("Is Object frozen after freezing it: "+Object.isFrozen(product))
+
+        product.name = "Pixel 2 XL";
+        console.log("product name changed after freezing : "+product.name);
+
+        var desc2 = Object.getOwnPropertyDescriptor(product, "name");
+        console.log("Is name property configurable after freezing object: "+desc2.configurable);
+        console.log("Is name property writable after freezing object: "+desc2.writable);
+    </script>
+</body>
+
+</html>

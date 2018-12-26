@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <script>
+        function Flight() {
+            this.display = function () {
+                console.log("Flight Object");
+            }
+        }
+
+        function Aeroplane(airlines, flightNumber) {
+            this.airlines = airlines;
+            this.flightNumber = flightNumber;
+
+            Object.defineProperty(this, "seats", {
+                get: function () {
+                    return 350;
+                }
+            });
+
+            this.display = function () {
+                console.log("Airlines : " + this.airlines);
+                console.log("Flight Number : " + this.flightNumber);
+                console.log("Seats : " + this.seats);
+            };
+
+            //return Flight; //although this is allowed but you need to implement inheritance to return parent object
+        }
+
+        var flight1 = new Flight();
+        var flight2 = new Flight;
+
+        console.log(flight2 instanceof Flight);
+        console.log(flight1.constructor === Flight)
+
+        var plane = new Aeroplane("Etihad", "EY286");
+        console.log(plane instanceof Flight);
+        plane.display();
+
+    </script>
+</head>
+
+</html>

@@ -1,0 +1,60 @@
+<html>
+
+<body>
+    <script>
+        //Data property attributes
+        var creditCard = {};
+
+        //if you define property using Object.defineProperty syntax then all the 3 boolean attributes will be set to false but if you define property using literal syntax then those attributes will be true
+        Object.defineProperty(creditCard, "name", {
+            value: "Axis Bank Card",
+            enumerable: false,
+            configurable: false,
+            writable: false
+        });
+
+        for (var prop in creditCard) {
+            console.log(prop);
+            console.log(creditCard[prop]);
+        }
+        console.log("name" in creditCard);
+        console.log(creditCard.propertyIsEnumerable("name"));
+
+        delete creditCard.name;
+
+        console.log("name" in creditCard);
+
+        creditCard.name = "Punjab Bank Card";
+        console.log(creditCard.name);
+
+        //Accessor proeprty Attributes
+        var debitCard = {
+            _name: "HDFC Bank"
+        };
+
+        // 
+        Object.defineProperty(debitCard, "name", {
+            get: function () {
+                return this._name;
+            }
+            // set: function (value) {
+            //     this._name = value;
+            // },
+            // enumerable: true,
+            // configurable: true
+        });
+        
+        console.log("name" in debitCard);
+        console.log(debitCard.propertyIsEnumerable("name"));
+
+        delete debitCard.name;
+
+        console.log("name" in debitCard);
+
+        debitCard.name="Barclays Bank";
+        console.log(debitCard.name);
+
+    </script>
+</body>
+
+</html>
